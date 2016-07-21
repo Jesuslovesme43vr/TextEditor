@@ -43,31 +43,31 @@ public abstract class Document {
 	}
 	
 	// This is a helper function that returns the number of syllables
-	// in a word.  You should write this and use it in your 
-	// BasicDocument class.
-	protected static int countSyllables(String word)
-	{
-	    //System.out.print("Counting syllables in " + word + "...");
-		int numSyllables = 0;
-		boolean newSyllable = true;
-		String vowels = "aeiouy";
-		char[] cArray = word.toCharArray();
-		for (int i = 0; i < cArray.length; i++)
+		// in a word.  You should write this and use it in your 
+		// BasicDocument class.
+		protected static int countSyllables(String word)
 		{
-		    if (i == cArray.length-1 && Character.toLowerCase(cArray[i]) == 'e' 
-		    		&& newSyllable && numSyllables > 0) {
-                numSyllables--;
-            }
-		    if (newSyllable && vowels.indexOf(Character.toLowerCase(cArray[i])) >= 0) {
-				newSyllable = false;
-				numSyllables++;
+		    //System.out.print("Counting syllables in " + word + "...");
+			int numSyllables = 0;
+			boolean newSyllable = true;
+			String vowels = "aeiouy";
+			char[] cArray = word.toCharArray();
+			for (int i = 0; i < cArray.length; i++)
+			{
+			    if (i == cArray.length-1 && Character.toLowerCase(cArray[i]) == 'e' 
+			    		&& newSyllable && numSyllables > 0) {
+	                numSyllables--;
+	            }
+			    if (newSyllable && vowels.indexOf(Character.toLowerCase(cArray[i])) >= 0) {
+					newSyllable = false;
+					numSyllables++;
+				}
+				else if (vowels.indexOf(Character.toLowerCase(cArray[i])) < 0) {
+					newSyllable = true;
+				}
 			}
-			else if (vowels.indexOf(Character.toLowerCase(cArray[i])) < 0) {
-				newSyllable = true;
-			}
-		}
-		//System.out.println( "found " + numSyllables);
-		return numSyllables;
+			//System.out.println( "found " + numSyllables);
+			return numSyllables;
 	}
 	
 	/** A method for testing
